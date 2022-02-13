@@ -16,7 +16,7 @@ describe('CharacterController', () => {
     it('should return "Hello World!"', () => {
       const appController =
         character.get<CharacterController>(CharacterController);
-      expect(appController.getHello()).toBe('Hello World!');
+      expect(appController.list()).toBe('Hello World!');
     });
   });
 });

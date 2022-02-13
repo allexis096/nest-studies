@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
+import { Character } from 'src/entities/character/character.entity';
 import { CharacterService } from './character.service';
 
-@Controller()
+@Controller('character')
 export class CharacterController {
-  constructor(private readonly appService: CharacterService) {}
+  constructor(private readonly characterService: CharacterService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  list(): Promise<Character[]> {
+    return this.characterService.list();
+  }
+
+  @Post()
+  create(character: Character): Promise<Character> {
+    return this.characterService.create(character);
   }
 }
