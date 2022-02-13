@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { CharacterDto } from 'src/entities/character/character.dto';
 import { Character } from 'src/entities/character/character.entity';
 import { CharacterService } from './character.service';
 
@@ -12,7 +13,7 @@ export class CharacterController {
   }
 
   @Post()
-  create(character: Character): Promise<Character> {
+  create(@Body() character: CharacterDto): Promise<Character> {
     return this.characterService.create(character);
   }
 }
